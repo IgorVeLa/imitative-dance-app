@@ -6,6 +6,8 @@ class Performance {
   Map<String, dynamic>? similarityScores;
   Uri? userVideoUrl;
   Uri? referenceVideoUrl;
+  Duration? videoDuration;
+  Uri? thumbnail;
 
   Performance({
     this.id,
@@ -15,6 +17,8 @@ class Performance {
     this.similarityScores,
     this.userVideoUrl,
     this.referenceVideoUrl,
+    this.videoDuration,
+    this.thumbnail,
   });
 
   factory Performance.fromJson(Map<String, dynamic> json) {
@@ -26,6 +30,8 @@ class Performance {
       similarityScores: json['similarityScores'],
       userVideoUrl: json['userVideoUrl'],
       referenceVideoUrl: json['referenceVideoUrl'],
+      videoDuration: json['videoDuration'],
+      thumbnail: json['thumbnail'],
     );
   }
 }

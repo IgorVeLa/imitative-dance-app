@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:imitative_dance_app/screens/home/home.dart';
+import 'package:imitative_dance_app/screens/home/home_screen.dart';
 import 'package:imitative_dance_app/screens/performances/performances.dart';
 import 'package:imitative_dance_app/screens/settings/settings.dart';
 
@@ -16,7 +16,7 @@ class _CustomScaffoldState extends State<PrimaryScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: [Home(), Performances(), Settings()][_currentIndex],
+      body: [HomeScreen(), Performances(), Settings()][_currentIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 36),
         child: NavigationBar(

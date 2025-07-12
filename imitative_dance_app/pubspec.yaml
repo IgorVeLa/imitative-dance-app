@@ -7,8 +7,10 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  bloc: ^9.0.0
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   gap: ^3.0.1
 
 dev_dependencies:
