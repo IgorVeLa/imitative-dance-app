@@ -37,7 +37,16 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: PerformanceInsight(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Recent Performance(s)"),
+                    SizedBox(
+                      height: 180,
+                      child: PerformanceInsight(),
+                    ),
+                  ],
+                ),
               ),
               Gap(gapStandardXLarge),
               BlocBuilder<PerformancesBloc, PerformancesState>(
@@ -151,6 +160,19 @@ class PerformanceInsight extends StatelessWidget {
   const PerformanceInsight({super.key});
   @override
   Widget build(BuildContext context) {
-    return LineChart(LineChartData());
+    return LineChart(
+      LineChartData(
+        maxY: 100,
+        titlesData: FlTitlesData(
+          show: true,
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          rightTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+        ),
+      ),
+    );
   }
 }
