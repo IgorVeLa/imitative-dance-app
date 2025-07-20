@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 200,
+                height: 250,
                 decoration: BoxDecoration(
                   color: Colors.green,
                   borderRadius:
@@ -37,15 +37,16 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Recent Performance(s)"),
-                    SizedBox(
-                      height: 180,
-                      child: PerformanceInsight(),
-                    ),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Recent Performance(s)"),
+                      Gap(gapLarge),
+                      SizedBox(height: 195, child: PerformanceInsight()),
+                    ],
+                  ),
                 ),
               ),
               Gap(gapStandardXLarge),
@@ -157,12 +158,34 @@ class PerformanceTile extends StatelessWidget {
 }
 
 class PerformanceInsight extends StatelessWidget {
+  // TODO: replace with repo data
   const PerformanceInsight({super.key});
   @override
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
+        lineBarsData: [
+          LineChartBarData(
+            barWidth: 3,
+            spots: [
+              FlSpot(1, 72),
+              FlSpot(2, 80),
+              FlSpot(3, 60),
+              FlSpot(4, 90),
+              FlSpot(5, 55),
+            ],
+            isCurved: true,
+            belowBarData: BarAreaData(
+              show: true,
+              gradient: LinearGradient(colors: [
+                Colors.blue,
+                Colors.blueGrey,
+              ]),
+            ),
+          ),
+        ],
         maxY: 100,
+        minY: 0,
         titlesData: FlTitlesData(
           show: true,
           topTitles: AxisTitles(
@@ -172,6 +195,7 @@ class PerformanceInsight extends StatelessWidget {
             sideTitles: SideTitles(showTitles: false),
           ),
         ),
+        gridData: FlGridData(show: false),
       ),
     );
   }
