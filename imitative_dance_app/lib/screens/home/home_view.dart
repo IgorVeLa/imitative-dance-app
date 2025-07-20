@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -36,6 +37,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
+                child: PerformanceInsight(),
               ),
               Gap(gapStandardXLarge),
               BlocBuilder<PerformancesBloc, PerformancesState>(
@@ -59,8 +61,8 @@ class HomeView extends StatelessWidget {
 }
 
 class PerformanceListView extends StatelessWidget {
-  PerformanceListView({super.key, required this.performances});
-  PaginatedResult<Performance> performances;
+  const PerformanceListView({super.key, required this.performances});
+  final PaginatedResult<Performance> performances;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -112,19 +114,21 @@ class PerformanceTile extends StatelessWidget {
                     BorderRadius.all(Radius.circular(borderRadiusSmall)),
                 child: Image.network(
                   performance.thumbnail.toString(),
-                  loadingBuilder: (context, child, loadingProgress) =>
-                      CircularProgressIndicator(),
-                  errorBuilder: (context, error, stackTrace) => Placeholder(),
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) =>
+                      Text(error.toString()),
                 )),
           ),
-          // Container(
-          //   width: 120,
-          //   decoration: BoxDecoration(
-          //     color: Colors.amber,
-          //     borderRadius:
-          //         BorderRadius.all(Radius.circular(borderRadiusSmall)),
-          //   ),
-          // ),
           Gap(gapSmall2),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,5 +144,13 @@ class PerformanceTile extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class PerformanceInsight extends StatelessWidget {
+  const PerformanceInsight({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return LineChart(LineChartData());
   }
 }

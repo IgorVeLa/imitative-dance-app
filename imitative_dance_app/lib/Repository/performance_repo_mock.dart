@@ -16,7 +16,8 @@ List<Performance> mockPerformances = [
       "right_leg_score": 87.0,
     },
     videoDuration: Duration(minutes: 1),
-    thumbnail: Uri.parse('https://placehold.co/120x150'),
+    thumbnail: Uri.parse(
+        'https://www.codetrade.io/wp-content/uploads/2023/10/How-Pose-Estimation-Works1.png'),
   ),
   Performance(
     id: "2",
@@ -31,7 +32,8 @@ List<Performance> mockPerformances = [
       "right_leg_score": 64.0,
     },
     videoDuration: Duration(minutes: 1, seconds: 23),
-    thumbnail: Uri.parse('https://placehold.co/120x150'),
+    thumbnail: Uri.parse(
+        'https://www.codetrade.io/wp-content/uploads/2023/10/How-Pose-Estimation-Works1.png'),
   ),
   Performance(
     id: "3",
@@ -46,7 +48,8 @@ List<Performance> mockPerformances = [
       "right_leg_score": 47.0,
     },
     videoDuration: Duration(seconds: 42),
-    thumbnail: Uri.parse('https://placehold.co/120x150'),
+    thumbnail: Uri.parse(
+        'https://www.codetrade.io/wp-content/uploads/2023/10/How-Pose-Estimation-Works1.png'),
   ),
 ];
 
