@@ -1,4 +1,4 @@
-import 'package:imitative_dance_app/Repository/performance_repo.dart';
+import 'package:imitative_dance_app/repository/performance_repo.dart';
 import 'package:imitative_dance_app/models/Performance.dart';
 import 'package:imitative_dance_app/models/paginated_result.dart';
 
